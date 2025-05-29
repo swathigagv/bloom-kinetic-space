@@ -2,14 +2,16 @@
 import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
-import { Float, Box } from '@react-three/drei';
+import { Float } from '@react-three/drei';
+import * as THREE from 'three';
 
 const Project3D: React.FC<{ position: [number, number, number]; color: string }> = ({ position, color }) => {
   return (
     <Float speed={1} rotationIntensity={0.5} floatIntensity={0.5}>
-      <Box position={position} args={[1, 1, 0.1]}>
-        <meshStandardMaterial color={color} />
-      </Box>
+      <mesh position={position}>
+        <boxGeometry args={[1, 1, 0.1]} />
+        <meshStandardMaterial color={new THREE.Color(color)} />
+      </mesh>
     </Float>
   );
 };

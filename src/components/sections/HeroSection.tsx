@@ -2,15 +2,16 @@
 import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
-import { Float, Text3D, OrbitControls } from '@react-three/drei';
+import { Float, OrbitControls } from '@react-three/drei';
 import ParticlesBackground from '@/components/ParticlesBackground';
+import * as THREE from 'three';
 
 const FloatingIcon: React.FC<{ position: [number, number, number] }> = ({ position }) => {
   return (
     <Float speed={1.5} rotationIntensity={1} floatIntensity={2}>
       <mesh position={position}>
         <boxGeometry args={[0.5, 0.5, 0.5]} />
-        <meshStandardMaterial color="#ec4899" />
+        <meshStandardMaterial color={new THREE.Color("#ec4899")} />
       </mesh>
     </Float>
   );
